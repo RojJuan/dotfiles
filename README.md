@@ -1,2 +1,2 @@
 # .dotfiles
-.dotfiles from the one kingboo
+.dotfiles from theonekingboo
