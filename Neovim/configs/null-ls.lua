@@ -1,7 +1,7 @@
 local null_ls = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local opts =  {
+local opts = {
   sources = {
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.gofumpt,
@@ -25,4 +25,19 @@ local opts =  {
   end,
 }
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format({ timeout = 1000, async = false })
+
+        if vim.bo[0].filetype == "cs" then
+          require("csharp").fix_usings()
+        end
+      end,
+    })
+  end
+})
 return opts

@@ -5,7 +5,7 @@ local capabilities = base.capabilities
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
 
-local servers = {"tsserver", "tailwindcss", "eslint", "cssls"}
+local servers = { "tsserver", "tailwindcss", "eslint", "cssls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -30,4 +30,13 @@ lspconfig.gopls.setup {
       gofumpt = true
     },
   },
+}
+
+lspconfig.omnisharp.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.signatureHelpProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  cmd = { "/home/kingboo/.local/share/nvim/mason/packages/omnisharp/omnisharp" },
 }

@@ -18,6 +18,7 @@ local plugins = {
         "prettierd",
         "tailwindcss-language-server",
         "typescript-language-server",
+        "omnisharp",
       }
     }
   },
@@ -35,7 +36,7 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function ()
+    opts = function()
       opts = require "plugins.configs.treesitter"
       opts.ensure_installed = {
         "lua",
@@ -45,6 +46,7 @@ local plugins = {
         "rust",
         "css",
         "go",
+        "c_sharp"
       }
       return opts
     end
@@ -75,19 +77,19 @@ local plugins = {
     "leoluz/nvim-dap-go",
     ft = "go",
     dependencies = "mfussenegger/nvim-dap",
-    config = function(_,opts)
+    config = function(_, opts)
       require("dap-go").setup(opts)
       require("core.utils").load_mappings("dap_go")
     end
   },
   {
     'saecki/crates.nvim',
-    ft = {"toml"},
+    ft = { "toml" },
     config = function(_, opts)
-      local crates  = require('crates')
+      local crates = require('crates')
       crates.setup(opts)
       require('cmp').setup.buffer({
-        sources = { { name = "crates" }}
+        sources = { { name = "crates" } }
       })
       crates.show()
       require("core.utils").load_mappings("crates")
@@ -96,7 +98,7 @@ local plugins = {
   {
     "rust-lang/rust.vim",
     ft = "rust",
-    init = function ()
+    init = function()
       vim.g.rustfmt_autosave = 1
     end
   },
@@ -116,7 +118,7 @@ local plugins = {
         behavior = cmp.ConfirmBehavior.Insert,
         select = false,
       }
-      table.insert(M.sources, {name = "crates"})
+      table.insert(M.sources, { name = "crates" })
       return M
     end,
   },
@@ -141,6 +143,29 @@ local plugins = {
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
+  },
+  {
+    "iabdelkareem/csharp.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
+      "Tastyep/structlog.nvim",
+    },
+    config = function()
+      require("mason").setup()
+
+      if require("csharp") and require("csharp").lsp then
+        require("csharp").lsp.enable = false
+      end
+
+      require("csharp").dap.adapter_name = "netcorebg"
+      require("csharp").setup()
+      require("csharp").debug_project()
+      require("csharp").run_project()
+      require("csharp").fix_usings()
+      require("csharp").fix_all()
+      require("csharp").go_to_definition()
+    end,
   },
 }
 return plugins
