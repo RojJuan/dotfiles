@@ -13,6 +13,7 @@ To use the Neovim config you will need a few things
 - Go language installed
 - Node and npm installed
 - .NET SDK
+- Github Copilot (optional)
 
 This is so you can download the packages for the 4 languages 
 
