@@ -12,8 +12,11 @@ To use the Neovim config you will need a few things
 - Rust language installed
 - Go language installed
 - Node and npm installed
+- .NET SDK
 
-This is so you can download the packages for the 3 languages (Go, Rust and Javascript)
+This is so you can download the packages for the 4 languages 
+
+There is also now Copilot in the config, but you will need to pay for Copilot in order to use it here.
 
 ## i3
 
