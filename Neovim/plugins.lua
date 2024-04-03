@@ -167,5 +167,20 @@ local plugins = {
       require("csharp").go_to_definition()
     end,
   },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd    = "Copilot",
+    event  = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "é",
+          },
+        }
+      })
+    end,
+  },
 }
 return plugins
