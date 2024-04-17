@@ -2,10 +2,10 @@ local M = {}
 
 M.general = {
   n = {
-    ["<C-g>"] = { "<cmd> TmuxNavigatie<CR>", "window left"},
-    ["<C-l>"] = { "<cmd> TmuxNavigatie<CR>", "window right"},
-    ["<C-j>"] = { "<cmd> TmuxNavigatie<CR>", "window down"},
-    ["<C-k>"] = { "<cmd> TmuxNavigatie<CR>", "window up"},
+    ["<C-g>"] = { "<cmd> TmuxNavigatie<CR>", "window left" },
+    ["<C-l>"] = { "<cmd> TmuxNavigatie<CR>", "window right" },
+    ["<C-j>"] = { "<cmd> TmuxNavigatie<CR>", "window down" },
+    ["<C-k>"] = { "<cmd> TmuxNavigatie<CR>", "window up" },
   }
 }
 
@@ -14,7 +14,7 @@ M.dap = {
   n = {
     ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>" },
     ["<leader>dus"] = {
-      function ()
+      function()
         local widgets = require('dap.ui.widgets');
         local sidebar = widgets.sidebar(widgets.scopes);
         sidebar.open();
@@ -28,7 +28,7 @@ M.crates = {
   plugin = true,
   n = {
     ["<leader>rcu"] = {
-      function ()
+      function()
         require('crates').upgrade_all_crates()
       end,
       "update crates"
@@ -64,6 +64,17 @@ M.gopher = {
     ["<leader>gsy"] = {
       "<cmd> GoTagAdd yaml <CR>",
       "Add yaml struct tags"
+    }
+  }
+}
+
+M.dap_python = {
+  plugin = true,
+  n = {
+    ["<leader>dpr"] = {
+      function()
+        require('dap-python').test_method()
+      end
     }
   }
 }
