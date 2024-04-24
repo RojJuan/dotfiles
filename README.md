@@ -27,3 +27,15 @@ The config will be fully working for me, but you will need to do some changes yo
 
 As this config is pretty much the config from [Tester Tech's video¸](https://www.youtube.com/watch?v=hz3plDLZ3kI&t=669s), i reccommend that you go watch his tutorial on his config and how it works:
 https://github.com/TesterTech/rice-i3-from-scratch-pywal
+
+## Sway
+
+The config uploaded is very simple BUT keep in mind that this config is for [SwayFX](https://github.com/WillPower3309/swayfx)
+
+If you want to use this on a normal Sway environment, make sure to edit some of the lines.
+
+## NixOS
+
+As i have switched to NixOS, there is now an availible config for use.
+
+As this config if pretty new and does not even use Home manager, it will be updated frequently.
