@@ -123,7 +123,6 @@
     lunar-client
     flatpak
     stacer
-    davinci-resolve
     (wrapOBS {
      plugins = with pkgs.obs-studio-plugins; [
         wlrobs
@@ -137,6 +136,7 @@
     cmake
     vscode
     ripgrep
+    davinci-resolve
   ];
 
   nix = {
