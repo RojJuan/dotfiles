@@ -121,6 +121,7 @@
     bun
     vlc
     lunar-client
+    flatpak
     stacer
     (wrapOBS {
      plugins = with pkgs.obs-studio-plugins; [
@@ -139,8 +140,14 @@
     steam-run
     gcc49
   ];
-
+  
   services.flatpak.enable = true;
+  
+  nix.gc = {
+          automatic = true;
+	  dates = "weekly";
+	  options = "--delete-older-than 7d";
+  };
 
   nix = {
     package = pkgs.nixFlakes;
