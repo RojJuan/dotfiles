@@ -137,6 +137,8 @@
     vscode
     ripgrep
     davinci-resolve
+    steam-run
+    gcc49
   ];
 
   nix = {
