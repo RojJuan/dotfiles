@@ -40,24 +40,6 @@ local plugins = {
     end
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function()
-      opts = require "plugins.configs.treesitter"
-      opts.ensure_installed = {
-        "lua",
-        "javascript",
-        "typescript",
-        "tsx",
-        "rust",
-        "css",
-        "go",
-        "c_sharp",
-        "python",
-      }
-      return opts
-    end
-  },
-  {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
