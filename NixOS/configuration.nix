@@ -138,6 +138,7 @@
     davinci-resolve
     steam-run
     gcc49
+    osu-lazer-bin
   ];
   
   services.flatpak.enable = true;
