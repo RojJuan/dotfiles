@@ -74,7 +74,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.neovim.plugins = [
-    pkgs.vimPlugins.nvim-treesitter.withALLGrammars
+  programs.bash.enable = true;
+
+   programs.neovim.plugins = [
+   pkgs.vimPlugins.nvim-treesitter.withALLGrammars
   ];
+
+  programs.zoxide = { enable = true; enableBashIntegration = true; };
+
 }

@@ -116,7 +116,6 @@
     todoist-electron
     gimp-with-plugins
     tmux
-    zoxide
     fzf
     bun
     vlc
@@ -228,6 +227,10 @@
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
   };
+
+  environment.shellAliases = {
+    cd = "z";
+  };  
   
   programs.steam = {
      enable = true;
