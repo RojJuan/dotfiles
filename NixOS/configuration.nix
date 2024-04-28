@@ -122,13 +122,6 @@
     lunar-client
     flatpak
     stacer
-    (wrapOBS {
-     plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-     ];
-   })
     chromium
     tofi
     libgcc
