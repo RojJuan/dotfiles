@@ -20,18 +20,19 @@ This is so you can download the packages for the 4 languages
 
 There is also now Copilot in the config, but you will need to pay for Copilot in order to use it here.
 
-The way this the files are installed means that you will need to be using an older version of nvchad
+> [!IMPORTANT]
+> The way the files are installed means that you will need to be using an older version of nvchad
+>
+> You can install that version with this command below :
 
-You can install that version with this command below :
-
-### Linux
-```
-git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-```
-### Windows (powershell)
-```
-git clone -b v2.0 https://github.com/NvChad/NvChad $ENV:USERPROFILE\AppData\Local\nvim --depth 1
-```
+> ### Linux
+> ```
+> git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+> ```
+> ### Windows (powershell)
+> ```
+> git clone -b v2.0 https://github.com/NvChad/NvChad $ENV:USERPROFILE\AppData\Local\nvim --depth 1
+> ```
 
 ## i3
 
@@ -51,4 +52,5 @@ If you want to use this on a normal Sway environment, make sure to edit some of 
 ## NixOS
 
 As i have switched to NixOS, there is now an availible config for use.
+
 Make sure to keep an eye on this config, it will be updated frequently.
