@@ -139,6 +139,7 @@
     steam-run
     gcc49
     osu-lazer-bin
+    anki-bin
   ];
   
   services.flatpak.enable = true;
