@@ -133,6 +133,7 @@
     gcc49
     osu-lazer-bin
     anki-bin
+    ffmpeg
   ];
   
   services.flatpak.enable = true;
