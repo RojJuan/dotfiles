@@ -82,6 +82,8 @@
 
   programs.zoxide = { enable = true; enableBashIntegration = true; };
 
+  programs.atuin = { enable = true; enableBashIntegration = true; };
+
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [

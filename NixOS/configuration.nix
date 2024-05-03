@@ -135,7 +135,6 @@
     vesktop
     fastfetch
     btop
-    atuin
     du-dust
     tldr
     ranger
