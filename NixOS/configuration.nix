@@ -139,6 +139,7 @@
     tldr
     ranger
     mangohud
+    cmatrix
   ];
   
   services.flatpak.enable = true;
