@@ -140,6 +140,7 @@
     ranger
     mangohud
     cmatrix
+    appimage-run
   ];
   
   services.flatpak.enable = true;
