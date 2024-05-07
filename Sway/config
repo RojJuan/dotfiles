@@ -47,7 +47,7 @@ scratchpad_minimize disable
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-output * bg /home/kingboo/Downloads/wallpapersden.com_cool-red-mountains-4k_1920x1080.jpg fill
+output * bg /home/kingboo/Downloads/nixwallp.png fill
 #
 # Example configuration:
 # 
