@@ -1,7 +1,7 @@
 # .dotfiles
 .dotfiles from theonekingboo
 
-This repo is mostly for me to easily replicate my neovim and i3 configs elsewhere
+This repo is mostly for me to easily replicate my neovim, nix, i3/sway and tmux
 
 Feel free to use tho!
 
