@@ -143,6 +143,7 @@
     appimage-run
     godot_4
     lmms
+    qbittorrent
   ];
   
   services.flatpak.enable = true;
