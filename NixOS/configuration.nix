@@ -141,6 +141,8 @@
     mangohud
     cmatrix
     appimage-run
+    godot_4
+    lmms
   ];
   
   services.flatpak.enable = true;
