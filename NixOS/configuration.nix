@@ -144,6 +144,8 @@
     godot_4
     lmms
     qbittorrent
+    qemu
+    quickemu
   ];
   
   services.flatpak.enable = true;
