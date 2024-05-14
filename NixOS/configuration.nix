@@ -99,7 +99,7 @@
     go
     python3
     dotnet-sdk_8
-    nodejs_21
+    nodejs_22
     unzip
     librewolf
     libsForQt5.kdenlive
@@ -229,7 +229,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
  
   environment.sessionVariables = {
@@ -240,6 +240,10 @@
     cd = "z";
   };  
   
+  environment.variables = {
+     WGPU_BACKEND = "gl";
+  };
+
   programs.steam = {
      enable = true;
      remotePlay.openFirewall = true;
