@@ -73,16 +73,30 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
+ 
   programs.bash.enable = true;
+ 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch";
+    };
+    history.size= 10000;
+    history.path = "${config.xdg.dataHome}/zsh/history";
+  };
 
    programs.neovim.plugins = [
    pkgs.vimPlugins.nvim-treesitter.withALLGrammars
   ];
 
-  programs.zoxide = { enable = true; enableBashIntegration = true; };
+  programs.zoxide = { enable = true; enableZshIntegration = true; };
 
-  programs.atuin = { enable = true; enableBashIntegration = true; };
+  programs.atuin = { enable = true; enableZshIntegration = true; };
 
   programs.obs-studio = {
     enable = true;
