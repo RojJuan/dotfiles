@@ -40,6 +40,14 @@ There is also now Copilot in the config, but you will need to pay for Copilot in
 > git clone -b v2.0 https://github.com/NvChad/NvChad $ENV:USERPROFILE\AppData\Local\nvim --depth 1
 > ```
 
+## Hyprland
+
+Hyprland is currently my main window manager, because of that, this is the most up-to-date and functional option out of the three
+
+## Tofi
+
+If you're using the tofi launcher, make sure to create the folder in .config/tofi and put my file in that folder
+
 ## i3
 
 My i3 config is about to change as i am switching distros and will most likely use Sway in the future.
