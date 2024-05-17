@@ -35,13 +35,12 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
     xkb = {
       layout = "ca";
-      variant = "";
+      variant = "fr";
     };
   };
 
@@ -61,7 +60,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -147,6 +146,16 @@
     qemu
     quickemu
     postman
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFLages = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+     })
+    )
+    dunst
+    libnotify
+    swww
+    grim
+    slurp
+    wl-clipboard
   ];
   
   services.flatpak.enable = true;
@@ -164,34 +173,11 @@
     ";
   };
 
-    programs.sway = {
+  programs.hyprland = {
     enable = true;
-    wrapperFeatures = {
-      gtk = true;
-      base = true;
-    };
-    extraPackages = with pkgs; [
-      swaylock
-      swayidle
-      wl-clipboard
-      wf-recorder
-      dmenu
-      wmenu
-      waybar-mpris
-    ];
-    package = pkgs.swayfx;
-    extraOptions = [ "--unsupported-gpu" ];
-    extraSessionCommands = ''
-          export XDG_CURRENT_DESKTOP=sway
-          export SDL_VIDEODRIVER=wayland
-          export QT_QPA_PLATFORM=wayland
-          export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-          export _JAVA_AWT_WM_NONREPARENTING=1
-          export MOZ_ENABLE_WAYLAND=1
-          export DRI_PRIME=1
-          export NIXOS_OZONE_WL=1
-        '';
-      };
+    xwayland.enable = true;
+  };
+
 
   hardware.opengl = {
     enable = true;
@@ -235,6 +221,7 @@
  
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   environment.shellAliases = {
