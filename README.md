@@ -1,9 +1,15 @@
 # .dotfiles
 .dotfiles from theonekingboo
 
-This repo is mostly for me to easily replicate my neovim, nix, i3/sway and tmux
+This repo is mostly for me to easily replicate my neovim, nix, window manager and tmux configurations elsewhere
 
 Feel free to use tho!
+
+## NixOS
+
+As i have switched to NixOS, there is now an availible config for use.
+
+If you are planning to use anything else on this config, i highly reccomend that you use my nix config so that the needed packages are installed.
 
 ## Neovim
 
@@ -48,9 +54,3 @@ https://github.com/TesterTech/rice-i3-from-scratch-pywal
 The config uploaded is very simple BUT keep in mind that this config is for [SwayFX](https://github.com/WillPower3309/swayfx)
 
 If you want to use this on a normal Sway environment, make sure to edit some of the lines.
-
-## NixOS
-
-As i have switched to NixOS, there is now an availible config for use.
-
-Make sure to keep an eye on this config, it will be updated frequently.
