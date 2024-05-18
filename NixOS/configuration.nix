@@ -234,6 +234,7 @@
 
   environment.shellAliases = {
     cd = "z";
+    ls = "ls --color";
   };  
   
   environment.variables = {

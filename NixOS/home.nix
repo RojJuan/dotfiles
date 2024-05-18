@@ -94,6 +94,9 @@
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "zsh-users/zsh-syntax-highlighting"; }
         { name = "zsh-users/zsh-completions"; }
+        { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
+        { name = "plugins/sudo"; tags = [ from:oh-my-zsh ]; }
+        { name = "plugins/command-not-found"; tags = [ from:oh-my-zsh ]; }
       ];
     };
   };
@@ -113,6 +116,8 @@
   programs.zoxide = { enable = true; enableZshIntegration = true; };
 
   programs.atuin = { enable = true; enableZshIntegration = true; };
+
+  programs.fzf = { enable = true; enableZshIntegration = true; };
 
   programs.obs-studio = {
     enable = true;
