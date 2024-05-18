@@ -160,9 +160,13 @@
     grim
     slurp
     wl-clipboard
+    gparted
+    udiskie
   ];
   
   services.flatpak.enable = true;
+
+  services.udisks2.enable = true;
   
   nix.gc = {
           automatic = true;

@@ -88,7 +88,23 @@
     };
     history.size= 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "zsh-users/zsh-completions"; }
+      ];
+    };
   };
+
+  programs.zsh.plugins = [
+    {name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";}
+  ];
+
+  programs.zsh.initExtra = ''
+   source ~/.p10k.zsh
+   '';
 
    programs.neovim.plugins = [
    pkgs.vimPlugins.nvim-treesitter.withALLGrammars
