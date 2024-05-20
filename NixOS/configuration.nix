@@ -162,11 +162,14 @@
     wl-clipboard
     gparted
     udiskie
+    minecraft
   ];
   
   services.flatpak.enable = true;
 
   services.udisks2.enable = true;
+
+  nixpkgs.config.allowBroken = true;
   
   nix.gc = {
           automatic = true;
