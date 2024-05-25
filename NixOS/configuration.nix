@@ -163,6 +163,7 @@
     gparted
     udiskie
     minecraft
+    glib
   ];
   
   services.flatpak.enable = true;
