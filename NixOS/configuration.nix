@@ -164,6 +164,8 @@
     udiskie
     minecraft
     glib
+    alacritty
+    findutils
   ];
   
   services.flatpak.enable = true;
@@ -240,7 +242,7 @@
     cd = "z";
     ls = "ls --color";
   };  
-  
+
   environment.variables = {
      WGPU_BACKEND = "gl";
   };
