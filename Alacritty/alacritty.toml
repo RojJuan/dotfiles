@@ -1,5 +1,5 @@
 import = [
-  "~/.config/alacritty/themes/themes/tokyo-night.toml"
+  "~/.config/alacritty/themes/themes/dracula.toml"
 ]
 
 live_config_reload = true
