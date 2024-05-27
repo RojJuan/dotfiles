@@ -173,6 +173,14 @@
   services.udisks2.enable = true;
 
   nixpkgs.config.allowBroken = true;
+
+  services.locate.enable = true;
+  
+  programs.seahorse.enable = true;
+
+  security.pam.services.login.enableGnomeKeyring = true;
+
+  services.gnome.gnome-keyring.enable = true;
   
   nix.gc = {
           automatic = true;
