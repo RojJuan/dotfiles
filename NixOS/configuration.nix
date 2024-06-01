@@ -166,6 +166,9 @@
     glib
     alacritty
     findutils
+    gtk4
+    gtk3
+    gtk2
   ];
   
   services.flatpak.enable = true;
@@ -183,6 +186,32 @@
   services.gnome.gnome-keyring.enable = true;
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+
+  stylix.polarity = "either";
+  
+  stylix.image = ./files/nixwallp.png;
+
+  stylix.targets.gnome.enable = true;
+
+  stylix.targets.gtk.enable = true;
+
+  stylix.autoEnable = true;
+
+  stylix.fonts = {
+    monospace = {
+      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+      name = "JetBrainsMono Nerd Font Mono";
+    };
+    sansSerif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Sans";
+    };
+    serif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Serif";
+    };
+  };
+
   
   nix.gc = {
           automatic = true;
