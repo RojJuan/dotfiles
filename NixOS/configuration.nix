@@ -197,6 +197,10 @@
 
   stylix.autoEnable = true;
 
+  stylix.cursor.package = pkgs.bibata-cursors;
+ 
+  stylix.cursor.name = "Bibata-Modern-Ice";
+
   stylix.fonts = {
     monospace = {
       package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
@@ -210,6 +214,13 @@
       package = pkgs.dejavu_fonts;
       name = "DejaVu Serif";
     };
+  };
+
+  stylix.fonts.sizes = {
+    applications = 12;
+    terminal = 15;
+    desktop = 10;
+    popups = 10;
   };
 
   
