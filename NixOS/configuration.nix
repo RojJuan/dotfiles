@@ -181,6 +181,8 @@
   security.pam.services.login.enableGnomeKeyring = true;
 
   services.gnome.gnome-keyring.enable = true;
+
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
   
   nix.gc = {
           automatic = true;
