@@ -169,6 +169,8 @@
     gtk4
     gtk3
     gtk2
+    android-tools
+    lsd
   ];
   
   services.flatpak.enable = true;
