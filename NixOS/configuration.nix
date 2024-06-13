@@ -171,6 +171,7 @@
     gtk2
     android-tools
     lsd
+    lazygit
   ];
   
   services.flatpak.enable = true;
