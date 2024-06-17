@@ -172,6 +172,7 @@
     android-tools
     lsd
     lazygit
+    gh
   ];
   
   services.flatpak.enable = true;
