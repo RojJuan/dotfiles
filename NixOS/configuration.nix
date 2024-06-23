@@ -140,7 +140,7 @@
     btop
     du-dust
     tldr
-    ranger
+    yazi
     mangohud
     cmatrix
     appimage-run
