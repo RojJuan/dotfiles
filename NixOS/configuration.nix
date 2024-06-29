@@ -173,9 +173,12 @@
     lsd
     lazygit
     gh
+    libsForQt5.kdeconnect-kde
   ];
   
   services.flatpak.enable = true;
+
+  virtualisation.waydroid.enable = true;
 
   services.udisks2.enable = true;
 
