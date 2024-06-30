@@ -137,7 +137,7 @@
     ffmpeg
     vesktop
     fastfetch
-    btop
+    htop
     du-dust
     tldr
     yazi
@@ -248,6 +248,12 @@
     enable = true;
     xwayland.enable = true;
   };
+
+ 
+  security.doas.enable = true;
+  security.doas.extraRules = [{
+    users = ["kingboo"];
+  }];
 
 
   hardware.opengl = {
