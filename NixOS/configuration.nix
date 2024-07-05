@@ -174,6 +174,10 @@
     lazygit
     gh
     libsForQt5.kdeconnect-kde
+    libvirt
+    virt-manager
+    pandoc
+    spotify-player
   ];
   
   services.flatpak.enable = true;
