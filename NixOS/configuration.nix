@@ -74,7 +74,7 @@
   users.users.kingboo = {
     isNormalUser = true;
     description = "kingboo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       thunderbird
     ];
@@ -174,11 +174,13 @@
     lazygit
     gh
     libsForQt5.kdeconnect-kde
-    libvirt
-    virt-manager
     pandoc
     spotify-player
   ];
+
+  virtualisation.libvirtd.enable = true;
+
+  programs.virt-manager.enable = true;
   
   services.flatpak.enable = true;
 
