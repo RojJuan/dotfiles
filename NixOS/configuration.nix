@@ -87,6 +87,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -127,7 +130,6 @@
     tofi
     libgcc
     cmake
-    vscode
     ripgrep
     davinci-resolve
     steam-run
@@ -176,6 +178,9 @@
     libsForQt5.kdeconnect-kde
     pandoc
     spotify-player
+    prismlauncher
+    ryujinx
+    unrar
   ];
 
   virtualisation.libvirtd.enable = true;
