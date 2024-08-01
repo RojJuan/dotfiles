@@ -181,6 +181,7 @@
     prismlauncher
     ryujinx
     unrar
+    heroic
   ];
 
   virtualisation.libvirtd.enable = true;
