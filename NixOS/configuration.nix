@@ -182,6 +182,7 @@
     ryujinx
     unrar
     heroic
+    vscode
   ];
 
   virtualisation.libvirtd.enable = true;
