@@ -183,6 +183,7 @@
     unrar
     heroic
     vscode
+    vital
   ];
 
   virtualisation.libvirtd.enable = true;
