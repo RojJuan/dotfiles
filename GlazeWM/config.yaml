@@ -118,6 +118,13 @@ binding_modes:
         bindings: ['alt+shift+p']
 
 keybindings:
+
+  # Main applications
+  - commands: ['shell-exec C:\Program Files\LibreWolf\librewolf.exe']
+    bindings: ['alt+w']
+  - commands: ['shell-exec explorer']
+    bindings: ['alt+e']
+
   # Shift focus in a given direction.
   - commands: ['focus --direction left']
     bindings: ['alt+h', 'alt+left']
