@@ -11,6 +11,8 @@ As i have switched to NixOS, there is now an availible config for use.
 
 If you are planning to use anything else on this config, i highly reccomend that you use my nix config so that the needed packages are installed.
 
+make sure to add stylix.enable to the old nix config
+
 ## Neovim
 
 To use the Neovim config (Nvchad) you will need a few things
