@@ -198,7 +198,7 @@ local plugins = {
         suggestion = {
           auto_trigger = true,
           keymap = {
-            accept = "é",
+            accept = "^",
           },
         }
       })
