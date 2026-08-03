@@ -21,7 +21,7 @@ local plugins = {
         "omnisharp",
         "pyright",
         "mypy",
-        "ruff-lsp",
+        "ruff",
         "black",
         "debugpy",
       }
@@ -204,5 +204,14 @@ local plugins = {
       })
     end,
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      -- For indent-blankline v2 (default in NvChad 2.0)
+      show_current_context = false,
+      show_current_context_start = false,
+
+    },
+  }
 }
 return plugins
