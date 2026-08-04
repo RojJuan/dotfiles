@@ -11,8 +11,9 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,25 +35,20 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "ca";
-      variant = "fr";
-    };
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
   };
-
-  # Configure console keymap
-  console.keyMap = "cf";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -74,143 +70,116 @@
   users.users.kingboo = {
     isNormalUser = true;
     description = "kingboo";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       thunderbird
     ];
   };
 
   programs.zsh.enable = true;
-  
+
   users.defaultUserShell = pkgs.zsh;
+
+  # Install firefox.
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    neovim
-    wdisplays
-    warp-terminal
-    spotify
-    gnome.nautilus
     git
-    rustup
-    go
-    python3
-    dotnet-sdk_8
-    nodejs_22
     unzip
-    librewolf
-    libsForQt5.kdenlive
-    audacity
+    brave
     wine
-    bottles
-    lutris
-    protonup-qt
     github-desktop
-    onlyoffice-bin
-    obsidian
-    todoist-electron
-    gimp-with-plugins
+    onlyoffice-desktopeditors
     tmux
-    fzf
-    bun
     vlc
-    lunar-client
-    flatpak
-    stacer
-    chromium
     tofi
     libgcc
     cmake
     ripgrep
-    davinci-resolve
-    steam-run
-    gcc49
-    osu-lazer-bin
-    anki-bin
-    ffmpeg
     vesktop
-    fastfetch
     htop
-    du-dust
-    tldr
-    yazi
-    mangohud
+    dust
     cmatrix
     appimage-run
-    godot_4
-    lmms
-    qbittorrent
-    qemu
-    quickemu
-    postman
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFLages = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-     })
-    )
     dunst
+    alacritty
+    lsd
+    unrar
+    vscode
+    kitty
+    awww
+    dunst
+    udiskie
+    nautilus
+    tofi
     libnotify
-    swww
-    grim
     slurp
     wl-clipboard
+    grim
+    neovim
+    nodejs
+    ripgrep
+    go
+    clang
+    gcc
     gparted
-    udiskie
-    minecraft
-    glib
-    alacritty
-    findutils
-    gtk4
-    gtk3
-    gtk2
-    android-tools
-    lsd
-    lazygit
-    gh
-    libsForQt5.kdeconnect-kde
-    pandoc
-    spotify-player
-    prismlauncher
-    ryujinx
-    unrar
-    heroic
-    vscode
-    vital
+    pipes
+    miktex
+    fastfetch
+    python3
   ];
 
-  virtualisation.libvirtd.enable = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  programs.virt-manager.enable = true;
-  
-  services.flatpak.enable = true;
 
-  virtualisation.waydroid.enable = true;
+  nix.gc = {
+	automatic = true;
+	dates = "weekly";
+	options = "--delete-older-than-7d";
+  };
 
-  services.udisks2.enable = true;
 
-  nixpkgs.config.allowBroken = true;
+  environment.sessionVariables = {
+	WLR_NO_HARDWARE_CURSORS = "1";
+	NIXOS_OZONE_WL = "1";
+  };
 
-  services.locate.enable = true;
-  
-  programs.seahorse.enable = true;
+  programs.steam = {
+	enable = true;
+	remotePlay.openFirewall = true;
+	dedicatedServer.openFirewall = true;
+	localNetworkGameTransfers.openFirewall = true;
+  };
 
-  security.pam.services.login.enableGnomeKeyring = true;
-
-  services.gnome.gnome-keyring.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+  
+  stylix.enable = true;
 
   stylix.polarity = "either";
-  
-  stylix.image = ./files/nixwallp.png;
+
+  stylix.image = ./nixwallp.png;
+
+  stylix.cursor.package = pkgs.bibata-cursors;
+  stylix.cursor.name = "Bibata-Modern-Ice";
+  stylix.cursor.size = 12;
+
+
+  stylix.fonts.sizes = {
+  	applications = 12;
+	terminal = 15;
+	desktop = 10;
+	popups = 10;
+  };
 
   stylix.targets.gnome.enable = true;
 
@@ -218,130 +187,24 @@
 
   stylix.autoEnable = true;
 
-  stylix.cursor.package = pkgs.bibata-cursors;
- 
-  stylix.cursor.name = "Bibata-Modern-Ice";
-
-  stylix.fonts = {
-    monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-      name = "JetBrainsMono Nerd Font Mono";
-    };
-    sansSerif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Sans";
-    };
-    serif = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Serif";
-    };
+  home-manager = {
+  	extraSpecialArgs = {inherit inputs;};
+	users = {
+		"kingboo" = import ./home.nix;
+	};
   };
 
-  stylix.fonts.sizes = {
-    applications = 12;
-    terminal = 15;
-    desktop = 10;
-    popups = 10;
-  };
-
-  
-  nix.gc = {
-          automatic = true;
-	  dates = "weekly";
-	  options = "--delete-older-than 7d";
-  };
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = "
-      experimental-features = nix-command flakes
-    ";
+  environment.variables = {
+  	cd = "z";
+	ls = "ls --color";
   };
 
   programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  	enable = true;
+	package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+	portalPackage  = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
- 
-  security.doas.enable = true;
-  security.doas.extraRules = [{
-    users = ["kingboo"];
-  }];
-
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-  };
- 
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
-  };
-
-  environment.shellAliases = {
-    cd = "z";
-    ls = "ls --color";
-  };  
-
-  environment.variables = {
-     WGPU_BACKEND = "gl";
-  };
-
-  programs.steam = {
-     enable = true;
-     remotePlay.openFirewall = true;
-     dedicatedServer.openFirewall = true;
-  };
-  
-  programs.steam.gamescopeSession.enable = true;
-
-  programs.gamemode.enable = true;
- 
-  home-manager = {
-    # also pass inputs to home-manager modules
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "kingboo" = import ./home.nix;
-    };
-  };
-  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -353,10 +216,10 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+ # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -367,6 +230,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }

@@ -14,6 +14,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
+  
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -85,6 +86,7 @@
 
     shellAliases = {
       ll = "ls -l";
+      cd = "z";
       update = "sudo nixos-rebuild switch";
     };
     history.size= 10000;
@@ -108,9 +110,10 @@
     {name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";}
   ];
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
    source ~/.p10k.zsh
    '';
+
 
    programs.neovim.plugins = [
    pkgs.vimPlugins.nvim-treesitter.withALLGrammars
@@ -122,12 +125,4 @@
 
   programs.fzf = { enable = true; enableZshIntegration = true; };
 
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-    ];
-  };
 }
