@@ -133,9 +133,11 @@
     pipes
     miktex
     fastfetch
+    python3
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
 
   nix.gc = {
 	automatic = true;
@@ -143,7 +145,6 @@
 	options = "--delete-older-than-7d";
   };
 
-  programs.hyprland.enable = true;
 
   environment.sessionVariables = {
 	WLR_NO_HARDWARE_CURSORS = "1";
@@ -198,6 +199,11 @@
 	ls = "ls --color";
   };
 
+  programs.hyprland = {
+  	enable = true;
+	package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+	portalPackage  = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

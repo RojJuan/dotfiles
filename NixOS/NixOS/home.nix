@@ -105,7 +105,6 @@
   };
 
   gtk.enable = true;
-  gtk.gtk4.theme = null;
 
   programs.zsh.plugins = [
     {name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";}
