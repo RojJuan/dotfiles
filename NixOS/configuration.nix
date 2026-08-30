@@ -4,6 +4,7 @@
 
 { config, pkgs, inputs, ... }:
 
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -14,6 +15,14 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
+
+ 
+  hardware.graphics = {
+  	enable = true;
+	enable32Bit = true;
+  };
+
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,6 +43,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -46,6 +56,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -134,6 +145,7 @@
     miktex
     fastfetch
     python3
+    tree-sitter
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -201,8 +213,7 @@
 
   programs.hyprland = {
   	enable = true;
-	package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-	portalPackage  = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+	package = pkgs.hyprland;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
